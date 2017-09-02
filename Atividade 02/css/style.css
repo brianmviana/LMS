@@ -1,0 +1,48 @@
+body{
+
+    background-color: #5fb9ff;
+    margin: auto;
+}
+
+#cabecalho{
+    margin-bottom: 20px;
+    background-color: cornflowerblue;
+    width: 100%;
+    height: 100%;
+    color: white;
+}
+#cabecalho h1, #cabecalho h2 {
+    width: 720px;
+    margin: auto;
+    padding-bottom: 2px;
+}
+
+#conteudo{
+    width: 720px;
+    margin: auto;
+}
+
+section{
+    background-color: #00b9ff;
+    border: solid 1px;
+    padding-left: 9px;
+    padding-right: 9px;
+    text-align: justify;
+    margin-bottom: 30px;
+}
+
+
+
+
+#rodape{
+    margin-bottom: 20px;
+    background-color: cornflowerblue;
+    width: 100%;
+    height: 100%;
+}
+#rodape p {
+    width: 720px;
+    margin: auto;
+    padding-bottom: 2px;
+    text-align: center;
+}
