@@ -22,6 +22,7 @@
                 <a href="artigo2.html">Artigo 2</a>
                 <a href="bonecoPalito.html">Boneco Palito</a>
                 <a href="videos.html">Vídeos</a>
+
             </div>
         </li>
         <li class="dropdown">
@@ -41,21 +42,46 @@
 <div id="conteudo">
 
 <article class="artigo">
-    <section class="sessaoArtigo">
-        <h3>How It Works: Internet of Things</h3>
-        <iframe width="700" height="400" src="https://www.youtube.com/embed/QSIPNhOiMoE" frameborder="0" allowfullscreen></iframe>
-    </section>
+    <section class="sessaoArtigo Desenho">
+        <form action="#" method="get">
+            <fieldset>
+                <legend>Informações Necessárias:</legend>
 
-    <section class="sessaoArtigo">
-        <h3>IoT (Internet das Coisas) com Windows 10</h3>
-        <iframe width="700" height="400" src="https://www.youtube.com/embed/-6_qWZzkAh4" frameborder="0" allowfullscreen></iframe>
-    </section>
+                <label>
+                    Nome:<br/>
+                    <input type="text" name="nome" placeholder="Diga-me seu nome"  maxlength="15"><br/>
+                </label>
+                <br/>
 
-    <section class="sessaoArtigo">
-        <h3>Mercado brasileiro de IoT se concentra em apenas dois segmentos</h3>
-        <iframe width="700" height="400" src="https://www.youtube.com/embed/SbuGhjpAEkI" frameborder="0" allowfullscreen></iframe>
-    </section>
+                <p>Qual seu sexo? <br/>
+                    <label><input type="radio" name="sexo" value="m" checked> Masculino</label>
+                    <label><input type="radio" name="sexo" value="f"> Feminino</label>
+                    <label><input type="radio" name="sexo" value="o"> Outro</label>
+                </p>
 
+                <label>
+                    <input type="checkbox" name="termos" value="yes">Ao clicar você esta concordando com os Termos de Uso.<br/>
+                </label>
+
+                <input type="submit" value="Enviar">
+
+            </fieldset>
+        </form>
+        <form>
+            <fieldset>
+                <legend>Outras Informações</legend>
+                <p> Escolha um valor no intervalo de 25000 á 30000</p>
+                <input type="number" min="25000" max="30000" step="1" value="25000"><br/>
+
+                <p>O campo abaixo é somente para leitura</p>
+                <input type="text" name="Texto" value="Campo de leitura" readonly="true"><br/>
+
+                <br/>
+                <input type="submit" value="Enviar">
+
+            </fieldset>
+        </form>
+    </section>
 </article>
 
 
