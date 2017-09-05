@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Tech i9</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+
+<header class="cabecalho">
+    <div class="cabecalhoConteiner">
+        <h1> Tech i9 </h1>
+        <h2> Tecnologia e Invação </h2>
+    </div>
+</header>
+
+<nav>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li class="dropdown">
+            <a href="javascript:void(0)" class="dropbtn">Artigos</a>
+            <div class="dropdown-content">
+                <a href="artigo1.html">Artigo 1</a>
+                <a href="artigo2.html">Artigo 2</a>
+                <a href="bonecoPalito.html">Boneco Palito</a>
+                <a href="videos.html">Vídeos</a>
+
+            </div>
+        </li>
+        <li class="dropdown">
+            <a href="javascript:void(0)" class="dropbtn">Link Relacionados</a>
+            <div class="dropdown-content">
+                 <a href="https://olhardigital.com.br/video/iot-na-ces/54189">Olhar Digital</a>
+                 <a href="https://www.tecmundo.com.br/internet-das-coisas">TecMundo</a>
+                 <a href="http://www.techtudo.com.br/noticias/noticia/2014/08/internet-das-coisas-entenda-o-conceito-e-o-que-muda-com-tecnologia.html">TechTudo</a>
+            </div>
+        </li>
+        <li><a href="contato.html">Contato</a></li>
+    </ul>
+</nav>
+
+
+
+<div id="conteudo">
+
+<article class="artigo">
+    <section class="sessaoArtigo Desenho">
+        <form action="#" method="get">
+            <fieldset>
+                <legend>Informações Necessárias:</legend>
+
+                <label>
+                    Nome:<br/>
+                    <input type="text" name="nome" placeholder="Diga-me seu nome"  maxlength="15"><br/>
+                </label>
+                <br/>
+
+                <p>Qual seu sexo? <br/>
+                    <label><input type="radio" name="sexo" value="m" checked> Masculino</label>
+                    <label><input type="radio" name="sexo" value="f"> Feminino</label>
+                    <label><input type="radio" name="sexo" value="o"> Outro</label>
+                </p>
+
+                <label>
+                    <input type="checkbox" name="termos" value="yes">Ao clicar você esta concordando com os Termos de Uso.<br/>
+                </label>
+
+                <input type="submit" value="Enviar">
+
+            </fieldset>
+        </form>
+        <form>
+            <fieldset>
+                <legend>Outras Informações</legend>
+                <p> Escolha um valor no intervalo de 25000 á 30000</p>
+                <input type="number" min="25000" max="30000" step="1" value="25000"><br/>
+
+                <p>O campo abaixo é somente para leitura</p>
+                <input type="text" name="Texto" value="Campo de leitura" readonly="true"><br/>
+
+                <br/>
+                <input type="submit" value="Enviar">
+
+            </fieldset>
+        </form>
+    </section>
+</article>
+
+
+</div>
+
+
+<footer id="rodape">
+    <p>Todos os direitos reservados</p>
+    <p>Contact information: <a href="mailto:someone@example.com">
+        someone@example.com</a>.</p>
+</footer>
+</body>
+</html>
