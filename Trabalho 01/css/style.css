@@ -1,0 +1,258 @@
+/* CONFIGURACOES GERAIS */
+*{
+    padding: 0px;
+    margin: 0px;
+}
+
+body{
+    background-color: rgba(159, 177, 179, 0.8);
+}
+
+/* MENU SUPERIOR */
+.menu-superior ul{
+    height:50px;
+    background-color: #333;
+    box-shadow: 0px 2px 3px rgba(0,0,0,0.5);
+}
+
+.menu-superior ul li{
+    display: inline-block;
+}
+
+.menu-superior ul li a {
+    display: block;
+    text-decoration: none;
+    text-align: center;
+    color: white;
+    padding: 16px 25px;
+    transition: background-color 1s;
+}
+
+.menu ul li a:hover{
+    background-color: #09709a;
+    color: white;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    visibility:hidden;
+    position: absolute;
+    background-color:  #555555;
+    width: 200px;
+    color: white;
+    max-height: 0px;
+    transition: max-height 1s ease-in;
+    overflow: hidden;
+    z-index: 99;
+}
+
+.dropdown:hover .dropdown-content{
+    display: block;
+    visibility: visible;
+    max-height: 150px;
+    transition: max-height 1s;
+}
+
+
+.dropbtn {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+
+
+.dropdown:hover .dropbtn {
+    background-color: white;
+    color: black;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 15px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {
+    background-color: #a9a9a9;
+}
+
+
+
+/* COLUNA ESQUERDA */
+
+.coluna-esquerda {
+    margin-top: 100px;
+    height: 400px;
+    width: 20%;
+    float: left;
+    box-shadow: 1px 3px 4px rgba(0, 0, 0, 0.5);
+    background: linear-gradient(#555555, #a9a9a9);
+    overflow: scroll;
+    border-radius: 20px;
+}
+
+.coluna-esquerda ul{
+    list-style-type: none;
+    margin-top: 20px;
+}
+
+.coluna-esquerda ul li {
+    display: block;
+    height: 50px;
+    width: 100%;
+}
+
+.coluna-esquerda ul li a{
+    text-decoration: none;
+    color: white;
+    display: block;
+    padding: 10px 10px;
+    transition: background-color 1s;
+}
+
+.coluna-esquerda ul li a:hover{
+    background-color: #c5c5c5;
+    color: black;
+}
+
+
+/* COLUNA CENTRO */
+
+.coluna-centro{
+    height: 600px;
+    width: 60%;
+    float:left;
+    background-color: rgba(159, 177, 179, 0.8);
+    text-align: justify;
+}
+
+.coluna-centro .imagem-move .imagem{
+    width: 20vw;
+}
+
+.coluna-centro  .imagem-move{
+    position: relative;
+    animation-name: mover;
+    animation-duration: 8s;
+    animation-iteration-count: infinite;
+    animation-direction: reverse;
+}
+
+
+
+/* COLUNA DIREITA */
+.coluna-direita{
+    height: 600px;
+    width: 20%;
+    float: left;
+    box-shadow: 1px 2px 4px rgba(0,0,0,0.5);
+    background: linear-gradient(#555555, #a9a9a9);
+}
+
+.coluna-direita ul{
+    list-style-type: none;
+    margin-top: 20px;
+}
+
+.coluna-direita ul li{
+    display: block;
+    height: 50px;
+    width: 100%;
+}
+
+.coluna-direita ul li a{
+    text-decoration: none;
+    color: white;
+    display: block;
+    padding: 10px 10px;
+    transition: background-color 1s;
+}
+
+.coluna-direita ul li a:hover{
+    background-color: #c5c5c5;
+    color: black;
+}
+
+
+/* RODAPE */
+
+.rodape{
+    width: 100%;
+    height: 70px;
+    background-color:#a9a9a9;
+    float: left;
+    text-align: center;
+}
+
+
+/* ANIMAÇÕES */
+
+
+@keyframes mover{
+    0%{
+        left: 0vw;
+    }
+    25%{
+        left: 20vw;
+    }
+    50%{
+        left: 39vw;
+    }
+    75%{
+        left: 20vw;
+    }
+    100%{
+        left: 0vw;
+    }
+}
+
+
+
+/* RESPONSIVIDADE */
+
+@media only screen and (max-width: 600px) {
+    .menu{
+        position: relative;
+        height: auto;
+    }
+
+    .coluna-esquerda{
+        background-color:  #aad9e4;
+        margin-top: 0;
+        position: static;
+        border-radius:0;
+        width: 100%;
+        padding: 0;
+        height: 170px;
+    }
+
+    .coluna-esquerda {
+        position: relative;
+        height: auto;
+    }
+
+    .coluna-direita{
+        position: relative;
+        width: 100%;
+    }
+
+    .conteudo{
+        margin-top: 30px;
+        margin-left: 50px;
+        margin-right: 50px;
+    }
+    .menu ul li{
+        display: block;
+        float: left;
+    }
+
+}
