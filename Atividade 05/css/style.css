@@ -1,0 +1,139 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    font-family: "Lato", sans-serif;
+}
+
+.sidenav {
+    height: 100vh;
+    width: 250px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color:  #c9a1a1;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: black;
+    background-color: #d9bdbe;
+    display: block;
+    transition: 0.3s;
+    margin-bottom: 5px;
+}
+
+.sidenav a:hover {
+    background-color: black;
+    color: #d9bdbe;
+}
+
+.cabecalho{
+    margin-left: 250px;
+    transition: margin-left .5s;
+    width: 100% - 250px;
+    min-width: 240px;
+    background-color: #c9a1a1;
+}
+
+.cabecalho h1{
+    padding: 5px 10px;
+    text-align: center;
+}
+
+
+.main {
+    margin-left: 250px;
+    transition: margin-left .5s;
+    width: 100% - 250px;
+    min-width: 240px;
+    padding: 16px;
+}
+
+/* Botao MENU*/
+.cabecalho div.botaoMenu{
+    padding: 2px;
+    position: absolute;
+    top: 0px;
+    display: none;
+}
+
+.cabecalho div.botaoMenu .botao{
+    cursor: pointer;
+    padding: 5px 10px;
+    user-select: none;
+    font-size: 20px;
+}
+
+/* ACORDION */
+.panel-group{
+    border: 1px solid rgba(0,0,0,0.1);
+}
+
+.accordion {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100% - 68px;
+    text-align: left;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    outline: none;
+    transition: 0.4s;
+    margin-bottom:10px;
+}
+
+.accordion.active, .accordion:hover {
+    background-color: #ddd;
+}
+
+.accordion:after {
+    font-size: 13px;
+    color: #777;
+    float: right;
+    margin-left: 5px;
+}
+
+.panel {
+    width: 100% - 68px;
+    padding: 0 18px;
+    background-color: white;
+    max-height: 0;
+    overflow: hidden;
+    transition: 0.4s ease-in-out;
+    opacity: 0;
+
+}
+.panel.show {
+    opacity: 1;
+    max-height: 500px;
+    margin-bottom: 10px;
+}
+
+
+/* RESPOSIVE */
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+}
+
+@media only screen and (max-width: 480px) {
+    .cabecalho div.botaoMenu {
+        display: block;
+    }
+    .sidenav{
+        width: 0px;
+    }
+    .main, .cabecalho{
+        margin-left: 0px;
+    }
+}
+
