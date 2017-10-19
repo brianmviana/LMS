@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Whatsapp</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="cabecalho"></header>
+
+<div class="conteiner">
+    <div class="coluna-left">
+        <header class="cabecalho-mensagem">
+            <span class="img-usuario"></span>
+            <span class="nome-usuario">Usuario</span>
+        </header>
+        <form>
+            <input type="text" placeholder="pesquisar usuario" name="pesquisa" class="pesquisa-input">
+        </form>
+
+        <div class="usuarios scroll-style">
+            <!-- Gerado dinamicamente para cada usuario
+            <div class="contato">
+                <span class="img-usuario"></span>
+                <span class="nome-usuario">Usuario</span>
+            </div>-->
+
+        </div>
+
+    </div>
+    <div class="coluna-right">
+        <div class="conversa"> <!-- adcionar class active para mostrar as mensagens-->
+            <header class="cabecalho-mensagem">
+                <span class="img-usuario"></span>
+                <span class="nome-usuario"></span><!-- Mudar usuario -->
+            </header>
+            <div class="mensagens scroll-style">
+                <!-- caixa de mensagens -->
+                <!--<span class="mensagem-recebida"> Teste </span>-->
+                <!--<span class="mensagem-enviada"> Teste </span>-->
+            </div>
+            <form>
+                <input type="text" placeholder="Digite uma mensagem" name="msg" class="mensagem-input">
+            </form>
+
+        </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+
+<script src="js/javascript.js"></script>
+</body>
+</html>
