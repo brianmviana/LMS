@@ -25,8 +25,6 @@ let meusContatos = [
     }
 ];
 
-
-
 function mostrarContatos(name) {
     let listaContatos = document.querySelector(".usuarios");
     let contato = document.createElement("div");
@@ -45,7 +43,7 @@ function mostrarContatos(name) {
 
 function listarContatos() {
     for (key in meusContatos) {
-        mostrarContatos(meusContatos[key].usuario);
+         mostrarContatos(meusContatos[key].usuario);
     }
 }
 listarContatos();
@@ -69,8 +67,7 @@ function criarMsgRecebida(texto) {
     return spanMsgRecebida;
 }
 
-let mensagensContato = document.querySelector(".mensagens");
-function buscarMensagens(usuario) {
+function buscarMensagens(usuario, mensagensContato) {
     let texto = "";
     for (key in meusContatos) {
         let user = meusContatos[key].usuario;
@@ -85,11 +82,75 @@ function buscarMensagens(usuario) {
             }
         }
     }
+    return mensagensContato;
 }
 
 
+function criarConversa(name) {
+    let conversa = document.createElement("div");
+    let cabecalho = document.createElement("header");
+    let spanImg = document.createElement("span");
+    let spanNome = document.createElement("span");
+    let mensagens = document.createElement("div");
+    let form = document.createElement("form");
+    let inputEnviar = document.createElement("input");
+    let nome = document.createTextNode(name);
+
+    conversa.classList.add("conversa");
+    cabecalho.classList.add("cabecalho-mensagem");
+    spanImg.classList.add("img-usuario");
+    spanNome.classList.add("nome-usuario");
+    mensagens.classList.add("mensagens");
+    mensagens.classList.add("scroll-style");
+    inputEnviar.classList.add("mensagem-input");
+    inputEnviar.type = "text";
+    inputEnviar.placeholder = "Digite uma mensagem";
+
+    spanNome.appendChild(nome);
+    cabecalho.appendChild(spanImg);
+    cabecalho.appendChild(spanNome);
+    form.appendChild(inputEnviar);
+    conversa.appendChild(cabecalho);
+    mensagens = buscarMensagens(name,mensagens);
+    conversa.appendChild(mensagens);
+    conversa.appendChild(form);
+
+    return conversa;
+}
+
+let todasConversa = [];
+
+function carragarConversa() {
+    for (key in meusContatos) {
+        todasConversa.push({usuario : meusContatos[key].usuario, conversa : criarConversa(meusContatos[key].usuario)});
+    }
+    // for(let i = 0; i < todasConversa.length; i++){
+    //     let colunaDireita = document.querySelector(".coluna-right");
+    //     colunaDireita.appendChild(todasConversa[i]);
+    // }
+}
+carragarConversa();
+
+function mostrarMensagem(user) {
+    let colunaDireita = document.querySelector(".coluna-right");
+    let conversa = document.querySelectorAll(".conversa .active");
+    if(conversa.length > 0){
+
+        colunaDireita.removeChild(conversa);
+    }else{
+        let newConversa;
+        for(key in todasConversa){
+            if(user == todasConversa[key].usuario){
+                newConversa = todasConversa[key].conversa;
+            }
+        }
+        newConversa.classList.add("active");
+        colunaDireita.appendChild(newConversa);
+    }
+
+}
+
 let abrirConversa = document.querySelectorAll(".contato");
-addOnClick();
 function addOnClick() {
     for(let i = 0; i < abrirConversa.length; i++){
         abrirConversa[i].addEventListener('click', function(){
@@ -97,15 +158,5 @@ function addOnClick() {
         });
     }
 }
-
-
-function mostrarMensagem(name) {
-    let conversa = document.querySelector(".conversa");
-    let contatoConversa = document.querySelector(".conversa .cabecalho-mensagem .nome-usuario");
-    let nome = document.createTextNode(name);
-    contatoConversa.appendChild(nome);
-    buscarMensagens(name);
-    conversa.classList.add("active");
-}
-
+addOnClick();
 
