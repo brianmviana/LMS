@@ -1,24 +1,34 @@
 let myUser = "brianmviana";
+let grupoAtual;
 
 function carregarMeuUsuario() {
     let meuUsuario = document.querySelector("#meuUsuario");
     let texto = document.createTextNode(myUser);
     meuUsuario.appendChild(texto);
 }
-
 carregarMeuUsuario();
+
+function updateMensagensScroll() {
+    var element = document.querySelector(".mensagens");
+    element.scrollTop = element.scrollHeight;
+}
+
 
 function getGrupos() {
     let request = new XMLHttpRequest();
     request.onreadystatechange = function () {
         if(request.readyState == 4){
             let listaGrupos = JSON.parse(request.responseText);
-            for(let x = 0; x < listaGrupos.length; x++){
-                criarContatoConteiner(listaGrupos[x].groupName);
-                getMensagensGrupo(listaGrupos[x].groupName, listaGrupos[x].groupID);
+            meusGrupos = listaGrupos;
+            let grupos = document.querySelector(".grupos");
+            if(grupos.childElementCount > 0){
+                for(let x = grupos.childElementCount; x > 0; x--){
+                    grupos.removeChild(grupos.lastChild);
+                }
             }
-            listaGruposLocal = listaGrupos;
-            criarTodosGrupos();
+            for(let x = 0; x < listaGrupos.length; x++){
+                criarContatoConteiner(listaGrupos[x].groupName,listaGrupos[x].groupID);
+            }
         }
     };
     request.open("GET", "http://rest.learncode.academy/api/brianmviana/groups", true);
@@ -30,33 +40,67 @@ function getMensagensGrupo(groupName,groupID) {
     request.onreadystatechange = function () {
         if(request.readyState == 4){
             let listaMensagens = JSON.parse(request.responseText);
-            criarConversaConteiner(groupName,listaMensagens);
-            addOnClick();
+            updateMensagens(groupName,listaMensagens);
+            updateMensagensScroll();
         }
     };
     request.open("GET", "http://rest.learncode.academy/api/brianmviana/" + groupID, true);
     request.send();
 }
 
-function criarContatoConteiner(name) {
+function postEnviarMensagem(usuario,texto,group) {
+    let ajax = new XMLHttpRequest();
+    ajax.onreadystatechange = function(){
+        if(ajax.readyState==4){
+            getMensagensGrupo(group.groupName,group.groupID);
+        }
+    };
+    ajax.open("POST", "http://rest.learncode.academy/api/brianmviana/" + group.groupID, true);
+    ajax.setRequestHeader("Content-Type","application/json");
+    let mensagem = {"userName":usuario , "message":texto};
+    let body = JSON.stringify(mensagem);
+    ajax.send(body);
+}
+
+function postCriarGrupo(groupName, groupID) {
+    let ajax = new XMLHttpRequest();
+    ajax.onreadystatechange = function(){
+        if(ajax.readyState==4){
+            console.log(ajax.status);
+            console.log(ajax.responseText);
+            console.log(ajax.statusText);
+            getGrupos();
+        }
+    };
+    ajax.open("POST", "http://rest.learncode.academy/api/brianmviana/groups", true);
+    ajax.setRequestHeader("Content-Type","application/json");
+    let grupo = {"groupName":groupName, "groupID":groupID};
+    let body = JSON.stringify(grupo);
+    ajax.send(body);
+}
+
+function criarContatoConteiner(groupName,groupID) {
     let listaContatos = document.querySelector(".grupos");
     let contato = document.createElement("div");
     let spanImg = document.createElement("span");
     let spanNome = document.createElement("span");
-    let nome = document.createTextNode(name);
-
+    let nome = document.createTextNode(groupName);
     contato.classList.add("contato");
-    spanImg.classList.add("img-grupo");
-    spanNome.classList.add("nome-grupo");
+    spanImg.classList.add("img-usuario");
+    spanNome.classList.add("nome-usuario");
     spanNome.appendChild(nome);
     contato.appendChild(spanImg);
     contato.appendChild(spanNome);
+    contato.addEventListener("click", function() {
+       getMensagensGrupo(groupName,groupID);
+        grupoAtual = {"groupName":groupName, "groupID":groupID};
+    });
+
     listaContatos.appendChild(contato);
 }
 
-function criarConversaConteiner(groupName,listaMensagens) {
+function criarConversaConteiner() {
     let colunaDireita = document.querySelector(".coluna-right");
-
     let conversa = document.createElement("div");
     let cabecalho = document.createElement("header");
     let spanImg = document.createElement("span");
@@ -64,18 +108,45 @@ function criarConversaConteiner(groupName,listaMensagens) {
     let mensagens = document.createElement("div");
     let form = document.createElement("form");
     let inputEnviar = document.createElement("input");
-    let nomeGrupo = document.createTextNode(groupName);
-
+    let buttonEnviar = document.createElement("button");
+    let textButton = document.createTextNode("Enviar");
     conversa.classList.add("conversa");
     cabecalho.classList.add("cabecalho-mensagem");
     spanImg.classList.add("img-grupo");
     spanNome.classList.add("nome-grupo");
     mensagens.classList.add("mensagens");
     mensagens.classList.add("scroll-style");
-    inputEnviar.classList.add("mensagem-input");
+    inputEnviar.classList.add("mensagem-input-text");
     inputEnviar.type = "text";
     inputEnviar.placeholder = "Digite uma mensagem";
+    buttonEnviar.classList.add("mensagem-input-button");
+    buttonEnviar.appendChild(textButton);
+    cabecalho.appendChild(spanImg);
+    cabecalho.appendChild(spanNome);
+    form.appendChild(inputEnviar);
+    form.appendChild(buttonEnviar);
+    conversa.appendChild(cabecalho);
+    conversa.appendChild(mensagens);
+    conversa.appendChild(form);
+    colunaDireita.appendChild(conversa);
+}
 
+function updateMensagens(nomeGrupo, listaMensagens) {
+    let conversa = document.querySelector(".conversa");
+    conversa.classList.add("active");
+
+    let spanNomeGrupo = document.querySelector(".nome-grupo");
+    let texto = document.createTextNode(nomeGrupo);
+    if(spanNomeGrupo.firstChild == null){
+        spanNomeGrupo.appendChild(texto);
+    }else{
+        spanNomeGrupo.replaceChild(texto, spanNomeGrupo.firstChild);
+    }
+
+    let mensagens = document.querySelector(".mensagens");
+    for(let m = mensagens.childElementCount; m > 0; m--){
+        mensagens.removeChild(mensagens.lastChild);
+    }
     for(let i = 0; i < listaMensagens.length; i++){
         let divMsgGroup = document.createElement("div");
         let divMsg = document.createElement("div");
@@ -101,27 +172,31 @@ function criarConversaConteiner(groupName,listaMensagens) {
         divMsgGroup.appendChild(divMsg);
         mensagens.appendChild(divMsgGroup);
     }
-    spanNome.appendChild(nomeGrupo);
-    cabecalho.appendChild(spanImg);
-    cabecalho.appendChild(spanNome);
-    form.appendChild(inputEnviar);
-    conversa.appendChild(cabecalho);
-    conversa.appendChild(mensagens);
-    conversa.appendChild(form);
-    colunaDireita.appendChild(conversa);
 }
 
-function addOnClick() {
-    let listaContatos = document.querySelectorAll(".contato");
-    let listaMsgs = document.querySelectorAll(".conversa");
-    for(let i = 0; i < listaContatos.length; i++){
-        listaContatos[i].addEventListener('click', function(){
-            for(let j = 0; j < listaMsgs.length; j++){
-                listaMsgs[j].classList.remove("active");
-            }
-            listaMsgs[i].classList.add("active");
-        });
-    }
+function enviarMensagem() {
+    let submit = document.querySelector(".mensagem-input-button");
+    let textInput = document.querySelector(".mensagem-input-text");
+    submit.addEventListener("click", function(){
+        event.preventDefault();
+        postEnviarMensagem(myUser,textInput.value, grupoAtual);
+        textInput.value = "";
+    });
+}
+
+function cadastrarGrupo() {
+    let submit = document.querySelector(".cadastrar-grupo-button");
+    let textInputGrupo = document.querySelector("#nomeGrupo");
+    let textInputID = document.querySelector("#idGrupo");
+    submit.addEventListener("click", function(){
+        event.preventDefault();
+        postCriarGrupo(textInputGrupo.value, textInputID.value);
+        textInputGrupo.value = "";
+        textInputID.value = "";
+    });
 }
 
 getGrupos();
+criarConversaConteiner();
+enviarMensagem();
+cadastrarGrupo();

@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<header class="cabecalho">
+<header class="cabecalho-principal">
     <span class="titulo-page">Watisapi</span>
     <button class="btn-entrar">Entrar</button>
 </header>
@@ -14,18 +14,19 @@
 <div class="conteiner">
 
     <div class="coluna-left">
-        <header class="cabecalho-mensagem">
-            <span class="img-grupo"></span>
-            <span id="meuUsuario" class="nome-grupo"></span>
+        <header class="cabecalho-grupos">
+            <span class="img-usuario"></span>
+            <span id="meuUsuario" class="nome-usuario"></span>
         </header>
-        <div class="grupos scroll-style">
-        </div>
-        <form class="form-criar-grupo">
-            <input type="text" placeholder="nome grupo" name="grupoNome" class="form-input">
-            <input type="text" placeholder="id grupo" name="grupoID" class="form-input">
-            <button type="submit" class="form-button">Criar</button>
+        <form class="conteiner-cadastro">
+            <input type="text" placeholder="Nome do Grupo" id="nomeGrupo" class="cadastrar-grupo-input">
+            <input type="text" placeholder="ID do Grupo" id="idGrupo" class="cadastrar-grupo-input">
+            <button class="cadastrar-grupo-button"> OK </button>
         </form>
 
+
+        <div class="grupos scroll-style">
+        </div>
     </div>
 
     <div class="coluna-right">
