@@ -10,8 +10,7 @@ let conteiner = document.querySelector(".conteiner");
 
 function carregarMeuUsuario() {
     let meuUsuario = document.querySelector("#meuUsuario");
-    let texto = document.createTextNode(myUser);
-    meuUsuario.appendChild(texto);
+    meuUsuario.textContent = myUser;
 }
 
 function openModal() {
