@@ -7,7 +7,6 @@ let modalInput = document.querySelector(".input-login");
 let modalButton = document.querySelector(".button-entrar");
 let conteiner = document.querySelector(".conteiner");
 
-
 function carregarMeuUsuario() {
     let meuUsuario = document.querySelector("#meuUsuario");
     meuUsuario.textContent = myUser;
@@ -268,19 +267,24 @@ function cadastrarGrupo() {
     let textInputID = document.querySelector("#idGrupo");
     submit.addEventListener("click", function(){
         event.preventDefault();
-        postCriarGrupo(textInputGrupo.value, textInputID.value);
-        textInputGrupo.value = "";
-        textInputID.value = "";
+        if(textInputGrupo.value == "" || textInputID.value == ""){
+            alert("Nenhum campo pode está vazio");
+        }else{
+            postCriarGrupo(textInputGrupo.value, textInputID.value);
+            textInputGrupo.value = "";
+            textInputID.value = "";
+        }
     });
 }
+
 
 getGrupos();
 criarConversaConteiner();
 enviarMensagem();
 cadastrarGrupo();
-
-
 logarUsuario();
 verificarLogin();
 carregarClickBotoes();
 
+
+setInterval("getMensagensGrupo(grupoAtual.groupName,grupoAtual.groupID)", 10000);
