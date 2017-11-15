@@ -118,7 +118,6 @@ function getMensagensGrupo(groupName,groupID) {
         if(request.readyState == 4){
             let listaMensagens = JSON.parse(request.responseText);
             updateMensagens(groupName,listaMensagens);
-            updateMensagensScroll();
         }
     };
     request.open("GET", "http://rest.learncode.academy/api/brianmviana/" + groupID, true);
@@ -130,6 +129,7 @@ function postEnviarMensagem(usuario,texto,group) {
     ajax.onreadystatechange = function(){
         if(ajax.readyState==4){
             getMensagensGrupo(group.groupName,group.groupID);
+            updateMensagensScroll();
         }
     };
     ajax.open("POST", "http://rest.learncode.academy/api/brianmviana/" + group.groupID, true);
@@ -169,7 +169,8 @@ function criarContatoConteiner(groupName,groupID) {
     contato.appendChild(spanImg);
     contato.appendChild(spanNome);
     contato.addEventListener("click", function() {
-       getMensagensGrupo(groupName,groupID);
+        getMensagensGrupo(groupName,groupID);
+        updateMensagensScroll();
         grupoAtual = {"groupName":groupName, "groupID":groupID};
     });
 
