@@ -1,18 +1,97 @@
-let myUser = "brianmviana";
+let myUser;
 let grupoAtual;
+let botaoLogin = document.querySelector(".btn-login");
+let modal = document.querySelector(".modal");
+let modalForm = document.querySelector(".modal-form");
+let modalInput = document.querySelector(".input-login");
+let modalButton = document.querySelector(".button-entrar");
+let conteiner = document.querySelector(".conteiner");
+
 
 function carregarMeuUsuario() {
     let meuUsuario = document.querySelector("#meuUsuario");
     let texto = document.createTextNode(myUser);
     meuUsuario.appendChild(texto);
 }
-carregarMeuUsuario();
+
+function openModal() {
+    modal.classList.add("active");
+    modalForm.classList.add("active");
+    conteiner.classList.remove("active");
+}
+
+function closeModal() {
+    modal.classList.remove("active");
+    modalForm.classList.add("active");
+    modalInput.value = "";
+    conteiner.classList.add("active");
+}
+
+function logarUsuario() {
+    if (typeof(Storage) !== "undefined") {
+        if(localStorage.getItem("userid") != null){
+            botaoLogin.textContent = "logout";
+        } else {
+            botaoLogin.textContent = "login";
+        }
+    }
+}
+
+function verificarLogin(){
+    if(botaoLogin.textContent == "login"){
+        openModal();
+    }
+    else{
+        logout();
+    }
+}
+
+function login(userId) {
+    if(userId.length >= 3){
+        if(typeof(Storage) !== "undefined"){
+            localStorage.setItem("userid", userId);
+            myUser = userId;
+            carregarMeuUsuario();
+            botaoLogin.textContent = "logout";
+        }
+        else{
+            console.log("Desculpe, Navegador não suporta o aplicativo");
+        }
+    }
+}
+
+function logout(){
+    if(typeof(Storage) !== "undefined"){
+        localStorage.removeItem("userid");
+        botaoLogin.textContent = "login";
+        conteiner.classList.remove("active");
+        openModal();
+    }
+}
+
+function carregarClickBotoes() {
+    let botaoLogin = document.querySelector(".btn-login");
+
+
+    window.addEventListener("click", function () {
+        if (event.target == modal) {
+            closeModal();
+        }
+    });
+
+    botaoLogin.addEventListener("click", verificarLogin);
+
+    modalButton.addEventListener("click", function () {
+        event.preventDefault();
+        login(modalInput.value);
+        closeModal();
+    });
+}
 
 function updateMensagensScroll() {
     var element = document.querySelector(".mensagens");
     element.scrollTop = element.scrollHeight;
 }
-
 
 function getGrupos() {
     let request = new XMLHttpRequest();
@@ -200,3 +279,9 @@ getGrupos();
 criarConversaConteiner();
 enviarMensagem();
 cadastrarGrupo();
+
+
+logarUsuario();
+verificarLogin();
+carregarClickBotoes();
+
