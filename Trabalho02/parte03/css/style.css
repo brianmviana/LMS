@@ -1,0 +1,209 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+body{
+    width: 100%;
+    height: 100%;
+    background-color: #E5DDD5;
+}
+header.cabecalho{
+    width: 100%;
+    height: 150px;
+    background-color: #009587;
+    position: relative;
+}
+
+header.cabecalho .titulo-page{
+    font-size: 30px;
+    color: whitesmoke;
+    padding: 50px 3%;
+    float: left;
+}
+
+header.cabecalho .btn-entrar{
+    background-color: white;
+    padding: 10px 20px;
+    margin: 50px 4%;
+    float: right;
+}
+
+.conteiner{
+    position: fixed;
+    width: 70%;/* Trocar para 900px*/
+    height: 90%;
+    top: 5%;
+    left: 15%;
+    background-color: #eeeeee;
+}
+
+.conteiner .coluna-left{
+    float: left;
+    width: 30%;
+    height: 100%;
+    background-color: #F7F9FA;
+}
+
+.conteiner .coluna-right{
+    float: right;
+    width: 70%;
+    height: 100%;
+    background-color: #F7F9FA;
+    position: relative;
+}
+
+
+.cabecalho-mensagem{
+    width: calc(100% - 2px);
+    height: 50px;
+    background-color: #EEEEEE;
+    border: 1px solid #DBDBD4;
+}
+
+.contato{
+    width: calc(100% - 12px);
+    height: 50px;
+    margin: 5px;
+    background-color: #DBDBDB;
+    border: 1px solid #aaaaaa;
+    cursor: pointer;
+}
+
+.contato:hover{
+    background-color: #EEEEEE;
+}
+
+
+.img-grupo{
+    background: white url("../img/usuario.png");
+    background-size: 40px 40px;
+    background-repeat: no-repeat;
+    display: block;
+    border-radius: 50%;
+    margin-top: 5px;
+    margin-left: 10px;
+    width: 40px;
+    height: 40px;
+    float: left;
+}
+
+.nome-grupo{
+    display: block;
+    margin-left: 10px;
+    padding: 15px 0;
+    float: left;
+}
+
+.conteiner .coluna-right .conversa{
+    width: 100%;
+    height: 100%;
+    display: none;
+    position: absolute;
+}
+.conteiner .coluna-right .conversa.active{
+    display: block;
+}
+
+.coluna-left .form-criar-grupo {
+    width: 100%;
+    height: 100px;
+    background-color: #555555;
+}
+
+.coluna-left .form-input{
+    width: calc(100% - 70px);
+    height: 40px;
+    border: 5px solid #EEEEEE;
+    text-align: left;
+    float: left;
+    background-color: white;
+    padding: 0 0 0 10px;
+    transition: 500ms;
+}
+
+.coluna-left .form-button{
+    width: 50px;
+    height: 100%;
+    font-size: 12px;
+    padding: 40px 10px;
+}
+
+.coluna-left .grupos{
+    width: calc(100% - 2px);
+    height: calc(100% - 107px);
+    max-height: calc(100% - 155px);
+    background-color: whitesmoke;
+    border: 1px solid #DBDBD4;
+    overflow-y: auto;
+}
+
+.coluna-right .mensagens{
+    width: calc(100% - 2px);
+    height: calc(100% - 97px);
+    background-color: #E5DDD5;
+    border: 1px solid #DBDBD4;
+    overflow-y: auto;
+}
+
+.mensagem-group{
+    position: relative;
+    width: 100%;
+    overflow: auto;
+}
+
+.coluna-right .mensagens .mensagem{
+    border: 1px solid #DBDBD4;
+    padding: 5px 10px;
+    margin: 5px 10px;
+    border-radius: 10px;
+}
+
+.coluna-right .mensagens .mensagem-recebida{
+    float: left;
+    background-color: whitesmoke;
+}
+
+.coluna-right .mensagens .mensagem-enviada{
+    float: right;
+    background-color: #DCF8C6;
+}
+
+.coluna-right .mensagens .mensagem .userName{
+    display: block;
+    font-size: 10px;
+    padding: 5px 0px;
+}
+
+.coluna-right .mensagens .mensagem .conteudo{
+    display: block;
+    font-size: 16px;
+    padding: 5px 10px;
+}
+
+.conversa .mensagem-input{
+    width: calc(100% - 15px);
+    height: 35px;
+    border: 5px solid #EEEEEE;
+    text-align: left;
+    background: white;
+    padding-left: 5px;
+    transition: 1s;
+}
+
+
+.scroll-style::-webkit-scrollbar-track{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    border-radius: 10px;
+    background-color: rgba(255,255,255,0.08);
+}
+
+.scroll-style::-webkit-scrollbar{
+    width: 6px;
+    background-color: #fefefe;
+}
+
+.scroll-style::-webkit-scrollbar-thumb{
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: rgba(0,0,0,0.2);
+}

@@ -7,30 +7,88 @@
         body{
             text-align: center;
         }
+        .conteiner{
+            width: 60vw;
+            margin-left: 20vw;
+        }
+        .card{
+            width: 100px;
+            background-color: whitesmoke;
+            display: inline-block;
+            padding: 18px 0px;
+
+        }
+        .card a, .dropbtn{
+            padding: 20px 12px;
+            background-color: black;
+            font-size: 14px;
+            text-decoration: none;
+            color: white;
+        }
+        .card a:hover, .dropdown:hover .dropbtn {
+            background-color: rgba(0,0,0,0.4);
+            color: black;
+        }
+
+        .card.dropdown {
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            margin-top: 18px;
+            position: absolute;
+            min-width: 100px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: white;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
     </style>
 </head>
 <body>
+<div class="conteiner">
+
+    <h1> ATIVIDADES </h1>
+        <div class="card">
+            <a href="Atividade01/index.html"> Atividade 01</a>
+        </div>
+        <div class="card">
+            <a href="Atividade02/index.html"> Atividade 02</a>
+        </div>
+        <div class="card">
+            <a href="Atividade03/index.html"> Atividade 03</a>
+        </div>
+        <div class="card">
+            <a href="Atividade04/index.html"> Atividade 04</a>
+        </div>
+        <div class="card">
+            <a href="Atividade05/index.html"> Atividade 05</a>
+        </div>
 
 
-<h1> ATIVIDADES </h1>
-<a href="Atividade%2001/index.html"> Atividade 01</a>
-<br/><br/>
-<a href="Atividade%2002/index.html"> Atividade 02</a>
-<br/><br/>
-<a href="Atividade%2003/index.html"> Atividade 03</a>
-<br/><br/>
-<a href="Atividade%2004/index.html"> Atividade 04</a>
-<br/><br/>
-<a href="Atividade%2005/index.html"> Atividade 05</a>
+    <h1> TRABALHOS </h1>
+        <div class="card">
+            <a href="Trabalho01/index.html"> Trabalho 01</a>
+        </div>
 
-<br/><br/>
-<br/><br/>
+        <div class="card dropdown">
+            <a href="javascript:void(0)" class="dropbtn">Trabalho 02</a>
+            <div class="dropdown-content">
+                <a href="Trabalho02/parte01/index.html">Parte 01</a>
+                <a href="Trabalho02/parte02/index.html">Parte 02</a>
+            </div>
+        </div>
 
-<h1> TRABALHOS </h1>
-<a href="Trabalho%2001/index.html"> Trabalho 01</a>
-<br/><br/>
-<a href="Trabalho%2002/index.html"> Trabalho 02</a>
-<br/><br/>
 
+</div>
 </body>
 </html>

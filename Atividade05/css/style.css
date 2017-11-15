@@ -39,7 +39,7 @@ body {
 .cabecalho{
     margin-left: 250px;
     transition: margin-left .5s;
-    width: 100% - 250px;
+    width: calc(100% - 250px);
     min-width: 240px;
     background-color: #c9a1a1;
 }
@@ -53,7 +53,7 @@ body {
 .main {
     margin-left: 250px;
     transition: margin-left .5s;
-    width: 100% - 250px;
+    width: calc(100% - 250px);
     min-width: 240px;
     padding: 16px;
 }
@@ -83,7 +83,7 @@ body {
     color: #444;
     cursor: pointer;
     padding: 18px;
-    width: 100% - 68px;
+    width: calc(100% - 68px);
     text-align: left;
     border-bottom: 1px solid rgba(0,0,0,0.1);
     outline: none;
@@ -103,7 +103,7 @@ body {
 }
 
 .panel {
-    width: 100% - 68px;
+    width: calc(100% - 68px);
     padding: 0 18px;
     background-color: white;
     max-height: 0;
