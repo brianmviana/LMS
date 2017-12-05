@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produtos</title>
+    <script src="js/jquery.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+
+
+</head>
+<body>
+
+
+
+<div class="md-overlay">
+    <div class="md-modal">
+        <div class="md-content">
+            <div class="md-content-header">
+                <div class="md-content-title">Carrinho</div>
+                <button class="md-content-close">X</button>
+            </div>
+
+            <div class="md-content-body">
+                <div class="md-content-text">Seu carrinho de compras</div>
+
+                <div id="compras" class="md-content-body inline-block-centralizado">
+
+
+                </div>
+                <button class="md-modal-button">Finalizar compras</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<header class="page-header">
+    <div class="title">Loja de Coisas</div>
+    <button class="btn-sair">sair</button>
+    <div class="dropdown">
+        <button class="btn-login" id="btn-login">login</button>
+        <div class="dropdown-content" id="dropdown-content-login">
+            <input type="text" placeholder="Usuário" id="userName">
+            <input type="password" placeholder="Senha" id="passwd">
+            <button id="login-entrar">Entrar</button>
+        </div>
+    </div>
+
+    <!-- button cadastrar -->
+    <div class="dropdown">
+        <button class="btn-login" id="btn-cadastrar">cadastrar</button>
+        <div class="dropdown-content" id="dropdown-content-cadastrar">
+            <input type="text" placeholder="Usuário" id="userNameCad">
+            <input type="password" placeholder="Senha" id="passwdCad">
+            <button id="btn-cadastrar-enviar">Enviar</button>
+        </div>
+    </div>
+
+    <button class="btn-carrinho md-trigger">carrinho</button>
+</header>
+
+
+<main class="page-body">
+    <div class="conteiner inline-block-centralizado">
+        <div class="card-list">
+
+            <div class="card-list-top">
+                <span class="card-list-top-title">Produtos</span>
+            </div>
+
+            <div class="card-list-conteiner">
+
+            </div>
+
+        </div>
+    </div>
+
+</main>
+
+
+<footer class="page-footer">
+
+
+</footer>
+
+<script src="js/javascript.js"></script>
+
+
+
+
+</body>
+</html>
